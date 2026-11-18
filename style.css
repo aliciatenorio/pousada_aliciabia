@@ -1,0 +1,85 @@
+body { font-family: Arial, sans-serif; margin: 30px; }
+
+table { border-collapse: collapse; width: 100%; max-width: 700px; }
+th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+th { background-color: #f4f4f4; }
+
+.btn { padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; text-decoration: none; display: inline-block; }
+.btn-editar { background-color: #2196F3; color: white; }
+.btn-novo { background-color: #4CAF50; color: white; }
+.btn-novo:hover { background-color: #45a049; }
+
+.btn-editar:hover { background-color: #1976D2; }
+.btn-excluir { background-color: #e53935; color: white; }
+.btn-excluir:hover { background-color: #b71c1c; }
+
+form { max-width: 400px; }
+label { display: block; margin-top: 15px; font-weight: bold; }
+input[type="text"], input[type="number"], input[type="date"], select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.btn-salvar { 
+    margin-top: 20px; padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; font-size: 16px; }
+
+.btn-salvar:hover { background-color: #45a049; }
+
+.erro { color: red; margin-top: 15px; }
+.sucesso { color: green; margin-top: 15px; }
+
+
+body {
+    background-image: url("FundoNatal.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-position: center 20%;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+
+h1 {
+    color: #800020;
+    margin-top: 50px;
+    padding-top: 165px;
+}
+
+.btn-opcao {
+    display: inline-block;
+    background-color: #800020;
+    color: white;
+    text-decoration: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    width: 200px;
+    text-align: center;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.btn-opcao:hover {
+    background-color: #5c0017;
+}
+
+.inicio {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 10px 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.inicio h1 {
+    margin: 5px 0 15px;
+    padding: 0;
+}
+
+.inicio p {
+    margin: 8px 0;
+}
