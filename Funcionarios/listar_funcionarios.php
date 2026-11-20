@@ -25,9 +25,9 @@ try {
 
     <h2>Funcionarios Cadastrados</h2>
 
-    <p><a href="../index.php">Início</a></p>
+    <p><a class="btn btn-inicio" href="../index.php">Início</a></p>
 
-    <p><a href="form_funcionarios.php">+ Novo Funcionario</a></p>
+    <p><a class="btn btn-novo" href="form_funcionarios.php">+ Novo Funcionario</a></p>
 
     <?php if (count($funcionarios) > 0): ?>
         <table>
@@ -38,7 +38,7 @@ try {
                     <th>Cargo</th>
                     <th>Salario</th>
                     <th>Telefone</th>
-                    <th>Acoes</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
 
