@@ -1,26 +1,25 @@
 <?php
     require_once '../conexao.php';
 
-    $sql = 'SELECT tbHospedes.codigo_hospede, tbHospedes.nome_hospede, COUNT(tbReservas.codigo_reserva) AS total_reservas
-            FROM tbHospedes tbHospedes INNER JOIN tbReservas ON tbHospedes.codigo_hospede = tbReservas.hospede_codigo
-            GROUP BY tbHospedes.nome_hospede,
-            ORDER BY total_reservas DESC';
+    $sql = $pdo->prepare('SELECT tbHospedes.codigo_hospede, tbHospedes.nome_hospede, COUNT(tbReservas.codigo_reserva) AS total_reservas
+                          FROM tbHospedes INNER JOIN tbReservas ON tbHospedes.codigo_hospede = tbReservas.hospede_codigo
+                          GROUP BY tbHospedes.codigo_hospede, tbHospedes.nome_hospede
+                          ORDER BY total_reservas DESC');
 
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
+    $sql->execute();
 
-    $reservas = $stmt->fetchAll();
+    $reservas = $sql->fetchAll();
 
-    ?>
-
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Relatório de Reservas</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-
+    <p><a class="btn btn-inicio" href="../index.php">Início</a></p>
     <h1>Relatório de Reservas por Hóspede</h1>
 
     <p>Este relatório apresenta a quantidade de reservas realizadas por cada hóspede cadastrado no hotel.</p>
