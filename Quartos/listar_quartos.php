@@ -21,7 +21,7 @@
     <h2>Quartos cadastrados</h2>
 
     <p><a class="btn btn-inicio" href="../index.php">Início</a></p>
-    <p><a class="btn btn-novo" href="form_quarto.php">Novo Quarto</a></p>
+    <p><a class="btn btn-novo" href="form_quarto.php">+ Novo Quarto</a></p>
 
     <?php if(count($quartos) > 0): ?>
         <table>
