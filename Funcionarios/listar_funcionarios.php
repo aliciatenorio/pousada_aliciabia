@@ -58,7 +58,7 @@ try {
                         <td>
                             <a class="btn btn-editar" href="form_funcionarios.php?id=<?= (int)$funcionario['codigo_funcionario'] ?>">Editar</a>
 
-                            <a class="btn btn-editar" href="excluir_funcionarios.php?id=<?= (int)$funcionario['codigo_funcionario'] ?>">Excluir</a>
+                            <a class="btn btn-excluir" href="excluir_funcionarios.php?id=<?= (int)$funcionario['codigo_funcionario'] ?>">Excluir</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
