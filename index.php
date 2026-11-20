@@ -49,6 +49,9 @@ try {
             Quartos (<?= (int) $totalFuncionarios ?>)
             </a>
         </p>
+        <p>
+            <a class="btn btn-opcao" href="relatório/reservas_por_hospede.php">Reservas por hóspede</a>
+        </p>
     </div>
 </body>
 </html>
