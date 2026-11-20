@@ -25,9 +25,9 @@ try {
 
     <h2>Hospedes Cadastrados</h2>
 
-    <p><a class="" href="../index.php">Início</a></p>
+    <p><a class="btn btn-inicio" href="../index.php">Início</a></p>
 
-    <p><a class="" href="form_hospedes.php">+ Novo Hospede</a></p>
+    <p><a class="btn btn-novo" href="form_hospedes.php">+ Novo Hospede</a></p>
 
     <?php if (count($hospedes) > 0): ?>
         <table>
@@ -38,7 +38,7 @@ try {
                     <th>CPF</th>
                     <th>Telefone</th>
                     <th>Cidade</th>
-                    <th>Acoes</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
