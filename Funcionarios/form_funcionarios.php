@@ -176,7 +176,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     </form>
 
-    <p><a href="listar_funcionarios.php">Voltar para funcionarios</a></p>
+    <p><a href="listar_funcionarios.php">Acessar lista de funcionários</a></p>
 
 </body>
 </html>
