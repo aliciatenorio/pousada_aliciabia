@@ -1,85 +1,234 @@
-body { font-family: Arial, sans-serif; margin: 30px; }
-
-table { border-collapse: collapse; width: 100%; max-width: 700px; }
-th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
-th { background-color: #f4f4f4; }
-
-.btn { padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; text-decoration: none; display: inline-block; }
-.btn-editar { background-color: #2196F3; color: white; }
-.btn-novo { background-color: #4CAF50; color: white; }
-.btn-novo:hover { background-color: #45a049; }
-
-.btn-editar:hover { background-color: #1976D2; }
-.btn-excluir { background-color: #e53935; color: white; }
-.btn-excluir:hover { background-color: #b71c1c; }
-
-form { max-width: 400px; }
-label { display: block; margin-top: 15px; font-weight: bold; }
-input[type="text"], input[type="number"], input[type="date"], select {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-}
-
-.btn-salvar { 
-    margin-top: 20px; padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; font-size: 16px; }
-
-.btn-salvar:hover { background-color: #45a049; }
-
-.erro { color: red; margin-top: 15px; }
-.sucesso { color: green; margin-top: 15px; }
-
-
+/* CONFIGURAÇÕES GERAIS */
 body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    background-color: #4b0808;
     background-image: url("FundoNatal.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-position: center 20%;
+    background-attachment: fixed;
+    color: #55432e;
     text-align: center;
-    font-family: Arial, sans-serif;
 }
 
-
+/* TÍTULOS */
 h1 {
-    color: #800020;
+    color: #f8e8b5;
     margin-top: 50px;
     padding-top: 165px;
+    text-shadow: 1px 1px 4px #4b0808;
 }
 
+/* TABELAS */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 900px;
+    margin: 25px auto;
+    background-color: rgba(255, 248, 230, 0.96);
+    border: 2px solid #e8d9ad;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    border: 1px solid #e8d9ad;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #800020;
+    color: #ffe6a3;
+}
+
+td {
+    color: #55432e;
+}
+
+tr:hover {
+    background-color: #fff3d5;
+}
+
+/* BOTÕES GERAIS */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.btn-inicio {
+    background-color: #e9d79e;
+    color: #614c29;
+    border: 1px solid #d2bb7c;
+}
+
+.btn-inicio:hover {
+    background-color: #dcc486;
+}
+
+/* BOTÃO NOVO */
+.btn-novo {
+    background-color: #e9d79e;
+    color: #614c29;
+    border: 1px solid #d2bb7c;
+}
+
+.btn-novo:hover {
+    background-color: #dcc486;
+}
+
+/* BOTÃO EDITAR */
+.btn-editar {
+    background-color: #6eb4ff;
+    color: #181206;
+    border: 1px solid #d8c79e;
+}
+
+.btn-excluir {
+    background-color: #d60303d7;
+    color: #181209;
+    border: 1px solid #d8c79e;
+}
+
+.btn-editar:hover {
+    background-color: #546c93;
+}
+
+.btn-excluir:hover {
+    background-color: #66251a;
+}
+
+/* BOTÕES DE AÇÃO LADO A LADO */
+.acoes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+}
+
+.acoes .btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+/* FORMULÁRIOS */
+form {
+    max-width: 450px;
+    margin: 25px auto;
+    padding: 25px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 1px solid #e8d39b;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #806638;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 1px solid #dfc991;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.85);
+    font-size: 15px;
+}
+
+/* BOTÃO SALVAR */
+.btn-salvar {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #e9d79e;
+    color: #614c29;
+    border: 1px solid #d2bb7c;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn-salvar:hover {
+    background-color: #dcc486;
+}
+
+/* MENSAGENS */
+.Erro {
+    color: #bf0d00;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.Sucesso {
+    color: #547b4d;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* TELA INICIAL */
+.inicio {
+    position: relative;
+    margin: 150px auto 0 auto;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 10px 30px;
+    border: 1px solid #e8d39b;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    max-width: 600px;
+}
+
+.inicio h1 {
+    color: #684500;
+    margin: 5px 0 15px;
+    padding: 0;
+    text-shadow: none;
+}
+
+.inicio p {
+    margin: 8px 0;
+}
+
+/* OPÇÕES DA TELA INICIAL */
 .btn-opcao {
     display: inline-block;
     background-color: #800020;
-    color: white;
+    color: #eedeb0;
     text-decoration: none;
     padding: 12px 30px;
+    border: 1px solid #ddcca2;
     border-radius: 8px;
     width: 200px;
     text-align: center;
     font-size: 16px;
     transition: 0.3s;
+    margin: 8px;
 }
 
 .btn-opcao:hover {
     background-color: #5c0017;
+    color: #fff4d6;
+    transform: scale(1.04);
 }
-
-.inicio {
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.75);
-    padding: 10px 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.inicio h1 {
-    margin: 5px 0 15px;
-    padding: 0;
-}
-
-.inicio p {
-    margin: 8px 0;
+body.paginas-internas {
+    background-image: url('FundoNatal2.jpg');
 }
