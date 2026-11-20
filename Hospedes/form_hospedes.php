@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $id_post = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
 
-    if ($nome === '' || $cpf === ''|| $telefone ==='' || $cidade ==== '') {
+    if ($nome === '' || $cpf === ''|| $telefone ==='' || $cidade === '') {
 
         $erro = 'Preencha todos os campos obrigatórios.';
 
