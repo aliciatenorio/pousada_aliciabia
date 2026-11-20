@@ -9,8 +9,8 @@
         'situacao_quarto' => '',
         'tipo_quarto_codigo' => ''
     ];
-    $mensagemErro = '';
-    $mensagemSucesso = '';
+    $Erro = '';
+    $Sucesso = '';
     $editar = false;
 
     if ($idQuarto) {
@@ -40,7 +40,7 @@
         $idEnviado = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
 
         if (!$numeroQuarto || !$andarQuarto || $situacaoQuarto === '' || !$tipoQuartoCodigo) {
-            $mensagemErro = 'Preencha todos os campos corretamente!';
+            $Erro = 'Preencha todos os campos corretamente!';
 
             $quarto = [
                 'codigo_quarto' => $idEnviado,
@@ -65,7 +65,7 @@
                         ':tipo' => $tipoQuartoCodigo
                     ]);
 
-                    $mensagemSucesso = 'Quarto cadastrado com sucesso!';
+                    $Sucesso = 'Quarto cadastrado com sucesso!';
                 } else {
                     $stmt = $pdo->prepare("UPDATE tbQuartos
                                            SET numero_quarto = :numero,
@@ -83,7 +83,7 @@
                         ':id' => $idEnviado
                     ]);
 
-                    $mensagemSucesso = 'Quarto atualizado com sucesso!';
+                    $Sucesso = 'Quarto atualizado com sucesso!';
                     $editar = true;
                 }
 
@@ -96,7 +96,7 @@
                 ];
 
             } catch (PDOException $e) {
-                $mensagemErro = 'Falha ao salvar o quarto: ' . $e->getMessage();
+                $Erro = 'Falha ao salvar o quarto: ' . $e->getMessage();
             }
         }
     }
@@ -113,15 +113,15 @@
 </head>
 <body>
 
-    <?php if ($mensagemErro): ?>
-        <p class="mensagemErro">
-            <?= htmlspecialchars($mensagemErro) ?>
+    <?php if ($Erro): ?>
+        <p class="Erro">
+            <?= htmlspecialchars($Erro) ?>
         </p>
     <?php endif; ?>
 
-    <?php if ($mensagemSucesso): ?>
-        <p class="mensagemSucesso">
-            <?= htmlspecialchars($mensagemSucesso) ?>
+    <?php if ($Sucesso): ?>
+        <p class="Sucesso">
+            <?= htmlspecialchars($Sucesso) ?>
         </p>
     <?php endif; ?>
 
