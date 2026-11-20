@@ -50,8 +50,8 @@ try {
                         <td><?= htmlspecialchars($hospede['telefone_hospede']) ?></td>
                         <td><?= htmlspecialchars($hospede['cidade_hospede']) ?></td>
                         <td>
-                            <a class="" href="form_hospedes.php?id=<?= (int)$hospede['codigo_hospede'] ?>">Editar</a>
-                            <a class="" href="excluir_hospedes.php?id=<?= (int)$hospede['codigo_hospede'] ?>">Excluir</a>
+                            <a class="btn btn-editar" href="form_hospedes.php?id=<?= (int)$hospede['codigo_hospede'] ?>">Editar</a>
+                            <a class="btn btn-editar" href="excluir_hospedes.php?id=<?= (int)$hospede['codigo_hospede'] ?>">Excluir</a>
 
                         </td>
                     </tr>
