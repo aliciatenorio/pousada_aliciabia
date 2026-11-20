@@ -10,8 +10,8 @@
         'valor_total' => ''
     ];
 
-    $mensagemErro = '';
-    $mensagemSucesso = '';
+    $Erro = '';
+    $Sucesso = '';
     $data_atual = date('Y-m-d');
     $editar = false;
 
@@ -45,7 +45,7 @@
 
         // Verifica se todos os campos foram preenchidos.
         if (!$hospedeCodigo || $dataEntrada === '' || $dataSaida === '' || $valorTotal === '') {
-            $mensagemErro = 'Preencha todos os campos corretamente!';
+            $Erro = 'Preencha todos os campos corretamente!';
 
             $reserva = [
                 'codigo_reserva' => $idEnviado,
@@ -58,7 +58,7 @@
             $editar = (bool) $idEnviado;
 
         } elseif ($dataSaida <= $dataEntrada || $dataEntrada < $data_atual || $dataSaida < $data_atual || !is_numeric($valorTotal) || $valorTotal < 0) {
-            $mensagemErro = 'Verifique as datas e o valor total da reserva!';
+            $Erro = 'Verifique as datas e o valor total da reserva!';
 
             $reserva = [
                 'codigo_reserva' => $idEnviado,
@@ -84,7 +84,7 @@
                         ':valor' => $valorTotal
                     ]);
 
-                    $mensagemSucesso = 'Reserva cadastrada com sucesso!';
+                    $Sucesso = 'Reserva cadastrada com sucesso!';
                 } else {
                     // Prepara a consulta para atualizar uma reserva.
                     $stmt = $pdo->prepare("UPDATE tbReservas
@@ -103,7 +103,7 @@
                         ':id' => $idEnviado
                     ]);
 
-                    $mensagemSucesso = 'Reserva atualizada com sucesso!';
+                    $Sucesso = 'Reserva atualizada com sucesso!';
                     $editar = true;
                 }
 
@@ -116,7 +116,7 @@
                 ];
 
             } catch (PDOException $e) {
-                $mensagemErro = 'Falha ao salvar a reserva: ' . $e->getMessage();
+                $Erro = 'Falha ao salvar a reserva: ' . $e->getMessage();
             }
         }
     }
@@ -134,15 +134,15 @@
 </head>
 <body>
 
-    <?php if ($mensagemErro): ?>
-        <p class="mensagemErro">
-            <?= htmlspecialchars($mensagemErro) ?>
+    <?php if ($Erro): ?>
+        <p class="Erro">
+            <?= htmlspecialchars($Erro) ?>
         </p>
     <?php endif; ?>
 
-    <?php if ($mensagemSucesso): ?>
-        <p class="mensagemSucesso">
-            <?= htmlspecialchars($mensagemSucesso) ?>
+    <?php if ($Sucesso): ?>
+        <p class="Sucesso">
+            <?= htmlspecialchars($Sucesso) ?>
         </p>
     <?php endif; ?>
 
