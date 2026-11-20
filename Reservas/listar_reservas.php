@@ -18,6 +18,7 @@
     <body>
         <h2>Reservas cadastradas</h2>
 
+        <p><a class="" href="../index.php">Início</a></p>
         <p><a class="btn btn-novo" href="form_reserva.php">Nova Reserva</a></p>
 
         <?php if(count($reservas) > 0): ?>
@@ -50,7 +51,7 @@
                         <a class="btn btn-editar" href="form_reserva.php?id=<?= (int)$reserva['codigo_reserva'] ?>">Editar</a>
                     </td>
                     <td>
-                        <a class="btn btn-editar" href="excluir_reserva.php?id=<?= (int)$reserva['codigo_reserva'] ?>">Excluir</a>
+                        <a class="btn btn-excluir" href="excluir_reserva.php?id=<?= (int)$reserva['codigo_reserva'] ?>">Excluir</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
