@@ -20,7 +20,7 @@
 <body>
     <h2>Quartos cadastrados</h2>
 
-    <p><a class="" href="../index.php">Início</a></p>
+    <p><a class="btn btn-inicio" href="../index.php">Início</a></p>
     <p><a class="btn btn-novo" href="form_quarto.php">Novo Quarto</a></p>
 
     <?php if(count($quartos) > 0): ?>
@@ -55,8 +55,6 @@
                     </td>
                     <td>
                         <a class="btn btn-editar" href="form_quarto.php?id=<?= (int)$quarto['codigo_quarto'] ?>">Editar</a>
-                    </td>
-                    <td>
                         <a class="btn btn-excluir" href="excluir_quarto.php?id=<?= (int)$quarto['codigo_quarto'] ?>">Excluir</a>
                     </td>
                 </tr>
