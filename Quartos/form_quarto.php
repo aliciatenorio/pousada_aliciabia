@@ -53,6 +53,7 @@
             $editar = (bool) $idEnviado;
 
         } else {
+            
             try {
                 if (!$idEnviado) {
                     $stmt = $pdo->prepare("INSERT INTO tbQuartos(numero_quarto, andar_quarto, situacao_quarto, tipo_quarto_codigo)
@@ -115,7 +116,7 @@
 
     <?php if ($Erro): ?>
         <p class="Erro">
-            <?= htmlspecialchars($Erro) ?>
+            <?= htmalspecialchars($Erro) ?>
         </p>
     <?php endif; ?>
 
@@ -132,10 +133,10 @@
         <?php endif; ?>
 
         <label for="numero_quarto">Número do quarto:</label>
-        <input type="number" id="numero_quarto" name="numero_quarto" value="<?= htmlspecialchars((string)$quarto['numero_quarto']) ?>">
+        <input type="number" id="numero_quarto" name="numero_quarto" min="1" value="<?= htmlspecialchars((string)$quarto['numero_quarto']) ?>">
 
         <label for="andar_quarto">Andar:</label>
-        <input type="number" id="andar_quarto" name="andar_quarto" value="<?= htmlspecialchars((string)$quarto['andar_quarto']) ?>">
+        <input type="number" id="andar_quarto" name="andar_quarto" min="1" value="<?= htmlspecialchars((string)$quarto['andar_quarto']) ?>">
 
         <label for="situacao_quarto">Situação:</label>
         <select name="situacao_quarto" id="situacao_quarto">
