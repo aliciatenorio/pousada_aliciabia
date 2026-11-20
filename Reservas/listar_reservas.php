@@ -17,11 +17,11 @@
         <title>Lista de reservas</title>
         <link rel="stylesheet" href="../style.css">
     </head>
-    <body class="paginas-internas">
+    <body>
         <h2>Reservas cadastradas</h2>
 
         <p><a class="btn btn-inicio" href="../index.php">Início</a></p>
-        <p><a class="btn btn-novo" href="form_reserva.php">+Nova Reserva</a></p>
+        <p><a class="btn btn-novo" href="form_reserva.php">+ Nova Reserva</a></p>
 
         <?php if(count($reservas) > 0): ?>
         <table>
