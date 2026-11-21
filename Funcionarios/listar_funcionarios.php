@@ -25,9 +25,16 @@ try {
 
     <h2>Funcionarios Cadastrados</h2>
 
-    <p><a class="btn btn-inicio" href="../index.php">Início</a></p>
+    <div class='mudanca'>
+        <a class="btn btn-inicio" href="../index.php">Início</a>
+        <a class="btn btn-novo" href="form_funcionarios.php">+ Novo Funcionario</a>
+    </div>
 
-    <p><a class="btn btn-novo" href="form_funcionarios.php">+ Novo Funcionario</a></p>
+    <?php $msg = filter_input(INPUT_GET, 'msg', FILTER_SANITIZE_SPECIAL_CHARS);?>
+
+    <?php if($msg === 'excluido'): ?>
+        <p class="Sucesso">Funcionário excluído com sucesso!</p>
+    <?php endif; ?>
 
     <?php if (count($funcionarios) > 0): ?>
         <table>
