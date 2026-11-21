@@ -170,7 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     </form>
 
-    <p><a href="listar_hospedes.php">Voltar para hospedes</a></p>
+    <p><a class="btn btn-inicio" href="listar_hospedes.php">Voltar para hospedes</a></p>
 
 </body>
 </html>
