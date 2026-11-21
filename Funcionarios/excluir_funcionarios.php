@@ -1,7 +1,7 @@
+
 <?php
 require_once '../conexao.php';
 
-// POST = confirmação enviada -> executa a exclusão
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
@@ -19,11 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Erro ao excluir funcionario: " . $e->getMessage());
     }
 
-    header('Location: listar_funcionarios.php');
+    header('Location: listar_funcionarios.php?msg=excluido');
     exit;
 }
 
-// GET = mostra a tela de confirmação
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
 if (!$id) {
@@ -56,28 +55,23 @@ if (!$funcionario) {
 </head>
 <body>
 
-    <h2>Confirmar Exclusão</h2>
-
-    <p>
-        Tem certeza que deseja excluir o funcionario
-        <strong><?= htmlspecialchars($funcionario['nome_funcionario']) ?></strong>
-        (cargo: <?= htmlspecialchars($funcionario['cargo_funcionario']) ?>)?
-    </p>
-
-    <p>Esta ação não pode ser desfeita.</p>
-
     <form method="POST" action="excluir_funcionarios.php">
+        <h2>Confirmar Exclusão</h2>
 
-        <input type="hidden" name="id"
-               value="<?= (int)$funcionario['codigo_funcionario'] ?>">
+        <p> 
+            Tem certeza que deseja excluir o funcionario
+            <strong><?= htmlspecialchars($funcionario['nome_funcionario']) ?></strong>
+            (cargo: <?= htmlspecialchars($funcionario['cargo_funcionario']) ?>)?
+        </p>
 
-        <button type="submit">Excluir</button>
+        <p>Esta ação não pode ser desfeita.</p>
 
-        <button type="submit"
-                formaction="listar_funcionarios.php">
-            Cancelar
-        </button>
+         <input type="hidden" name="id" value="<?= (int)$funcionario['codigo_funcionario'] ?>">
 
+        <div>
+            <button type="submit" class="btn btn-excluir">Excluir</button>
+            <button type="submit" class="btn btn-editar" formaction="listar_funcionarios.php"> Cancelar</button>
+        </div>
     </form>
 
 </body>
