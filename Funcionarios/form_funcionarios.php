@@ -1,8 +1,8 @@
 <?php
 require_once '../conexao.php';
 
-$erro = '';
-$sucesso = '';
+$Erro = '';
+$Sucesso = '';
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
 $funcionario = [
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($nome === '' || $salario === ''|| $cargo === '' || $telefone === '') {
 
-        $erro = 'Preencha todos os campos obrigatórios.';
+        $Erro = 'Preencha todos os campos obrigatórios.';
 
         $funcionario = [
             'nome_funcionario' => $nome,
@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     ':id' => $id_post
                 ]);
 
-                $sucesso = 'Funcionario atualizado com sucesso!';
+                $Sucesso = 'Funcionario atualizado com sucesso!';
 
             } else {
 
@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     ':telefone' => $telefone
                 ]);
 
-                $sucesso = 'Funcionario cadastrado com sucesso!';
+                $Sucesso = 'Funcionario cadastrado com sucesso!';
             }
 
             $funcionario = [
@@ -113,15 +113,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $editando = (bool)$id_post;
 
         } catch (Exception $e) {
-            $erro = $e->getMessage();
+            $Erro = $e->getMessage();
 
         } catch (PDOException $e) {
-            $erro = 'Erro ao salvar funcionario: ' . $e->getMessage();
+            $Erro = 'Erro ao salvar funcionario: ' . $e->getMessage();
         }
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -133,13 +132,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <h2><?= $editando ? 'Editar Funcionario' : 'Cadastrar Novo Funcionario' ?></h2>
 
-    <?php if ($erro): ?>
-        <p class="erro"><?= htmlspecialchars($erro) ?></p>
+    <?php if ($Erro): ?>
+        <p class="Erro"><?= htmlspecialchars($Erro) ?></p>
     <?php endif; ?>
 
-    <?php if ($sucesso): ?>
-        <p id="msg-sucesso" class="sucesso">
-            <?= htmlspecialchars($sucesso) ?>
+    <?php if ($Sucesso): ?>
+        <p id="msg-sucesso" class="Sucesso">
+            <?= htmlspecialchars($Sucesso) ?>
         </p>
     <?php endif; ?>
 
@@ -176,7 +175,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     </form>
 
-    <p><a href="listar_funcionarios.php">Acessar lista de funcionários</a></p>
+    <p><a href="listar_funcionarios.php">Voltar para funcionarios</a></p>
 
 </body>
 </html>
