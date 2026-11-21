@@ -2,8 +2,31 @@
 <?php
     require_once '../conexao.php';
 
+    $colunasPermitidas = [
+        'id' => 'tbQuartos.codigo_quarto',
+        'numero' => 'tbQuartos.numero_quarto',
+        'andar' => 'tbQuartos.andar_quarto',
+        'situacao' => 'tbQuartos.situacao_quarto',
+        'tipo_quarto' => 'tbTipos_Quarto.nome_tipo',
+    ];
+
+    $coluna = filter_input(INPUT_GET, 'coluna', FILTER_SANITIZE_SPECIAL_CHARS);
+    $ordem = filter_input(INPUT_GET, 'ordem', FILTER_SANITIZE_SPECIAL_CHARS);
+
+    if (!isset($colunasPermitidas[$coluna])) {
+        $coluna = 'id';
+    }
+
+    if ($ordem !== 'DESC') {
+        $ordem = 'ASC';
+    }
+
+    $campo = $colunasPermitidas[$coluna];
+
     try {
-        $stmt = $pdo->query("SELECT * FROM tbQuartos INNER JOIN tbTipos_Quarto ON tbQuartos.tipo_quarto_codigo = tbTipos_Quarto.codigo_tipo ORDER BY codigo_quarto ASC")->fetchAll();
+        $stmt = $pdo->query("SELECT * 
+                             FROM tbQuartos INNER JOIN tbTipos_Quarto ON tbQuartos.tipo_quarto_codigo = tbTipos_Quarto.codigo_tipo 
+                             ORDER BY $campo $ordem")->fetchAll();
         $quartos = $stmt;
 
     } catch(PDOException $e){
@@ -31,15 +54,17 @@
         <p class="Sucesso">Quarto excluído com sucesso!</p>
     <?php endif; ?>
 
+    <p >Clique no título das colunas para ordenar os registros (A–Z ou Z–A).</p>
+
     <?php if(count($quartos) > 0): ?>
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Número</th>
-                    <th>Andar</th>
-                    <th>Situação</th>
-                    <th>Tipo de quarto</th>
+                    <th class="ordenacao"><a href="?coluna=id&ordem=<?= $coluna === 'id' && $ordem === 'ASC' ? 'DESC' : 'ASC' ?>">ID</a></th>
+                    <th class="ordenacao"><a href="?coluna=numero&ordem=<?= $coluna === 'numero' && $ordem === 'ASC' ? 'DESC' : 'ASC' ?>">Número</a></th>
+                    <th class="ordenacao"><a href="?coluna=andar&ordem=<?= $coluna === 'andar' && $ordem === 'ASC' ? 'DESC' : 'ASC' ?>">Andar</a></th>
+                    <th class="ordenacao"><a href="?coluna=situacao&ordem=<?= $coluna === 'situacao' && $ordem === 'ASC' ? 'DESC' : 'ASC' ?>">Situação</a></th>
+                    <th class="ordenacao"><a href="?coluna=tipo_quarto&ordem=<?= $coluna === 'tipo_quarto' && $ordem === 'ASC' ? 'DESC' : 'ASC' ?>">Tipo Quarto</a></th>
                     <th>Ações</th>
                 </tr>
             </thead>
