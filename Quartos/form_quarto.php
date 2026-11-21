@@ -163,9 +163,7 @@
 
     </form>
 
-    <p>
-        <a href="listar_quartos.php">Acessar lista de quartos</a>
-    </p>
+    <p><a class="btn btn-inicio" href="listar_quartos.php">Acessar lista de quartos</a></p>
 
 </body>
 </html>
