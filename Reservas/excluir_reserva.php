@@ -1,4 +1,3 @@
-
 <?php
     // Inclui o arquivo responsável pela conexão com o banco de dados.
     require_once '../conexao.php';
