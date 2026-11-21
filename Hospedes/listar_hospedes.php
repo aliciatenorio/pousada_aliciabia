@@ -1,19 +1,35 @@
 <?php
-require_once '../conexao.php';
+    require_once '../conexao.php';
 
-try {
+    $colunasPermitidas = [
+        'id' => 'codigo_hospede',
+        'nome' => 'nome_hospede',
+        'cpf' => 'cpf_hospede',
+        'telefone' => 'telefone_hospede',
+        'cidade' => 'cidade_hospede',
+    ];
 
-    $stmt = $pdo->prepare("SELECT * FROM tbHospedes ORDER BY nome_hospede ASC");
-    $stmt->execute();
-    
+    $coluna = filter_input(INPUT_GET, 'coluna', FILTER_SANITIZE_SPECIAL_CHARS);
+    $ordem = filter_input(INPUT_GET, 'ordem', FILTER_SANITIZE_SPECIAL_CHARS);
 
-    $hospedes = $stmt->fetchAll();
-    
-} catch (PDOException $e) {
-    die("Erro ao buscar seus hospedes: " . $e->getMessage());
-}
-?>
+    if (!isset($colunasPermitidas[$coluna])) {
+        $coluna = 'id';
+    }
 
+    if ($ordem !== 'DESC') {
+        $ordem = 'ASC';
+    }
+
+    $campo = $colunasPermitidas[$coluna];
+
+    try {
+        $stmt = $pdo->query("SELECT * FROM tbHospedes ORDER BY $campo $ordem")->fetchAll();
+        $hospedes = $stmt;
+
+    } catch (PDOException $e) {
+        die("Erro ao buscar seus hospedes: " . $e->getMessage());
+    }
+    ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -36,15 +52,17 @@ try {
         <p class="Sucesso">Hóspede excluído com sucesso!</p>
     <?php endif; ?>
 
+    <p >Clique no título das colunas para ordenar os registros (A–Z ou Z–A).</p>
+
     <?php if (count($hospedes) > 0): ?>
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>CPF</th>
-                    <th>Telefone</th>
-                    <th>Cidade</th>
+                    <th><a href="?coluna=id&ordem=<?= $coluna === 'id' && $ordem === 'ASC' ? 'DESC' : 'ASC' ?>">ID</a></th>
+                    <th><a href="?coluna=nome&ordem=<?= $coluna === 'nome' && $ordem === 'ASC' ? 'DESC' : 'ASC' ?>">Nome</a></th>
+                    <th><a href="?coluna=cpf&ordem=<?= $coluna === 'cpf' && $ordem === 'ASC' ? 'DESC' : 'ASC' ?>">CPF</a></th>
+                    <th><a href="?coluna=telefone&ordem=<?= $coluna === 'telefone' && $ordem === 'ASC' ? 'DESC' : 'ASC' ?>">Telefone</a></th>
+                    <th><a href="?coluna=cidade&ordem=<?= $coluna === 'cidade' && $ordem === 'ASC' ? 'DESC' : 'ASC' ?>">Cidade</a></th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -59,7 +77,6 @@ try {
                         <td>
                             <a class="btn btn-editar" href="form_hospedes.php?id=<?= (int)$hospede['codigo_hospede'] ?>">Editar</a>
                             <a class="btn btn-excluir" href="excluir_hospedes.php?id=<?= (int)$hospede['codigo_hospede'] ?>">Excluir</a>
-
                         </td>
                     </tr>
                 <?php endforeach; ?>
