@@ -166,9 +166,7 @@
 
     </form>
 
-    <p>
-        <a href="listar_reservas.php">Acessar lista de reservas</a>
-    </p>
+    <p><a class="btn btn-inicio" href="listar_reservas.php">Acessar lista de reservas</a></p>
 
 </body>
 </html>
