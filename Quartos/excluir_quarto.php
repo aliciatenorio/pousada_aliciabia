@@ -15,12 +15,13 @@
             );
 
             $stmt->execute([':id' => $id]);
+
+            header('Location: listar_quartos.php?msg=excluido');
+            exit;
+
         } catch (PDOException $e) {
             die('Não foi possível excluir o quarto, pois ele está vinculado a uma reserva. Erro técnico (' . $e->getMessage(). ')');
         }
-
-        header('Location: listar_quartos.php');
-        exit;
     }
 
     $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
@@ -57,21 +58,26 @@
 </head>
 <body>
 
-    <h2>Confirmar Exclusão</h2>
+    <form method="POST" action="excluir_reserva.php">
 
-    <p>
-        Tem certeza que deseja excluir o quarto <strong><?= htmlspecialchars($quarto['numero_quarto']) ?></strong>
-        do tipo <strong><?= htmlspecialchars($quarto['nome_tipo']) ?></strong>,
-        localizado no andar <strong><?= htmlspecialchars($quarto['andar_quarto']) ?></strong>
-        e com situação <strong><?= htmlspecialchars($quarto['situacao_quarto']) ?></strong>?
-    </p>
+        <h2>Confirmar Exclusão</h2>
 
-    <p>Esta ação não pode ser desfeita.</p>
+        <p>
+            Tem certeza que deseja excluir o quarto <strong><?= htmlspecialchars($quarto['numero_quarto']) ?></strong>
+            do tipo <strong><?= htmlspecialchars($quarto['nome_tipo']) ?></strong>,
+            localizado no andar <strong><?= htmlspecialchars($quarto['andar_quarto']) ?></strong>
+            e com situação <strong><?= htmlspecialchars($quarto['situacao_quarto']) ?></strong>?
+        </p>
 
-    <form method="POST" action="excluir_quarto.php">
+        <p>Esta ação não pode ser desfeita.</p>
+
         <input type="hidden" name="id" value="<?= (int) $quarto['codigo_quarto'] ?>">
-        <button type="submit" class="btn btn-excluir">Excluir</button>
-        <button type="submit" class="btn btn-editar" formaction="listar_quartos.php">Cancelar</button>
+
+        <div class="botoes">
+            <button type="submit" class="btn btn-excluir">Excluir</button>
+            <button type="submit" class="btn btn-editar" formaction="listar_quartos.php">Cancelar</button>
+    
+        </div>    
     </form>
 </body>
 </html>
