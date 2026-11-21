@@ -1,3 +1,4 @@
+
 <?php
     require_once '../conexao.php';
 
@@ -15,12 +16,13 @@
             );
 
             $stmt->execute([':id' => $id]);
+
+            header('Location: listar_reservas.php?msg=excluido');
+            exit;
+
         } catch (PDOException $e) {
             die('Não foi possível excluir sua reserva, pois possui um quarto vinculado. Erro técnico (' . $e->getMessage(). ')');
         }
-
-        header('Location: listar_reservas.php');
-        exit;
     }
 
     $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
@@ -47,6 +49,7 @@
         exit;
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -56,22 +59,29 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-
-    <h2>Confirmar Exclusão</h2>
-
-    <p>
-        Tem certeza que deseja excluir a reserva do hóspede
-        <strong> <?= htmlspecialchars($reserva['nome_hospede']) ?></strong>
-        <strong> <?= DateTime::createFromFormat('Y-m-d', $reserva['data_entrada'])->format('d/m/Y') ?></strong>
-        e saída em <strong> <?= DateTime::createFromFormat('Y-m-d', $reserva['data_saida'])->format('d/m/Y') ?></strong>?
-    </p>
-
-    <p>Esta ação não pode ser desfeita.</p>
-
     <form method="POST" action="excluir_reserva.php">
-        <input type="hidden" name="id" value="<?= (int) $reserva['codigo_reserva'] ?>">
-        <button type="submit" class="btn btn-excluir">Excluir</button>
-        <button type="submit" class="btn btn-editar" formaction="listar_reservas.php">Cancelar</button>
+
+        <h2>Confirmar Exclusão</h2>
+
+        <p>
+            Tem certeza que deseja excluir a reserva do hóspede
+            <strong><?= htmlspecialchars($reserva['nome_hospede']) ?></strong>,
+            com entrada em
+            <strong><?= DateTime::createFromFormat('Y-m-d', $reserva['data_entrada'])->format('d/m/Y') ?></strong>
+            e saída em
+            <strong><?= DateTime::createFromFormat('Y-m-d', $reserva['data_saida'])->format('d/m/Y') ?></strong>?
+        </p>
+
+        <p>Esta ação não pode ser desfeita.</p>
+
+        <input type="hidden" name="id" value="<?= (int)$reserva['codigo_reserva'] ?>">
+
+        <div class="botoes">
+            <button type="submit" class="btn btn-excluir">Excluir</button>
+            <button type="submit" class="btn btn-editar" formaction="listar_reservas.php">Cancelar</button>
+        </div>
+
     </form>
+
 </body>
 </html>
