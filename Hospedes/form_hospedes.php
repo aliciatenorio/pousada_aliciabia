@@ -128,11 +128,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h2><?= $editando ? 'Editar Hospede' : 'Cadastrar Novo Hospede' ?></h2>
 
     <?php if ($erro): ?>
-        <p class="erro"><?= htmlspecialchars($erro) ?></p>
+        <p class="Erro"><?= htmlspecialchars($erro) ?></p>
     <?php endif; ?>
 
     <?php if ($sucesso): ?>
-        <p id="msg-sucesso" class="sucesso">
+        <p id="msg-sucesso" class="Sucesso">
             <?= htmlspecialchars($sucesso) ?>
         </p>
     <?php endif; ?>
@@ -170,7 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     </form>
 
-    <p><a href="listar_hospedes.php">Acessar lista de hóspedes</a></p>
+    <p><a href="listar_hospedes.php">Voltar para hospedes</a></p>
 
 </body>
 </html>
