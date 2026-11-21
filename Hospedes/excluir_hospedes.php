@@ -1,3 +1,4 @@
+
 <?php
 require_once '../conexao.php';
 
@@ -18,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Erro ao excluir hospede: " . $e->getMessage());
     }
 
-    header('Location: listar_hospedes.php');
+    header('Location: listar_hospedes.php?msg=excluido');
     exit;
 }
 
@@ -54,29 +55,22 @@ if (!$hospede) {
 </head>
 <body>
 
-    <h2>Confirmar Exclusão</h2>
-
-    <p>
-        Tem certeza que deseja excluir o hospede
-        <strong><?= htmlspecialchars($hospede['nome_hospede']) ?></strong>
-        (CPF: <?= htmlspecialchars($hospede['cpf_hospede']) ?>)?
-    </p>
-
-    <p>Esta ação não pode ser desfeita.</p>
-
     <form method="POST" action="excluir_hospedes.php">
+        <h2>Confirmar Exclusão</h2>
 
-        <input type="hidden" name="id"
-               value="<?= (int)$hospede['codigo_hospede'] ?>">
+        <p>
+            Tem certeza que deseja excluir o hospede
+            <strong><?= htmlspecialchars($hospede['nome_hospede']) ?></strong>
+            (CPF: <?= htmlspecialchars($hospede['cpf_hospede']) ?>)?
+        </p>
 
-        <button type="submit">Excluir</button>
+        <p>Esta ação não pode ser desfeita.</p>
 
-        <button type="submit"
-                formaction="listar_hospedes.php">
-            Cancelar
-        </button>
-
+            <input type="hidden" name="id" value="<?= (int)$hospede['codigo_hospede'] ?>">
+        <div>
+            <button type="submit" class="btn btn-excluir">Excluir</button>
+            <button type="submit" class="btn btn-editar" formaction="listar_hospedes.php"> Cancelar </button>
+        </div>    
     </form>
-
 </body>
 </html>
