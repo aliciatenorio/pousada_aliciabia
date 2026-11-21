@@ -20,8 +20,16 @@
 <body>
     <h2>Quartos cadastrados</h2>
 
-    <p><a class="btn btn-inicio" href="../index.php">Início</a></p>
-    <p><a class="btn btn-novo" href="form_quarto.php">+ Novo Quarto</a></p>
+    <div class='mudanca'>
+        <a class="btn btn-inicio" href="../index.php">Início</a>
+        <a class="btn btn-novo" href="form_quarto.php">+ Novo Quarto</a>
+    </div>
+
+    <?php $msg = filter_input(INPUT_GET, 'msg', FILTER_SANITIZE_SPECIAL_CHARS);?>
+
+    <?php if($msg === 'excluido'): ?>
+        <p class="Sucesso">Quarto excluído com sucesso!</p>
+    <?php endif; ?>
 
     <?php if(count($quartos) > 0): ?>
         <table>
