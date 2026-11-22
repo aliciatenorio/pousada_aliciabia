@@ -59,6 +59,8 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+    <?php require_once __DIR__ . '/../includes/cabecalho.php'; ?>
+
 
     <!-- Caixa principal que organiza o conteúdo da listagem. -->
     <div class="caixa-listagem">
@@ -68,7 +70,6 @@
 
         <!-- Área com os botões para voltar ao início e cadastrar um novo quarto. -->
         <div class="topo-pagina">
-            <a class="btn btn-inicio" href="../index.php">Início</a>
             <a class="btn btn-novo" href="form_quarto.php">+ Novo Quarto</a>
         </div>
 
@@ -149,5 +150,6 @@
         <?php endif; ?>
 
     </div>
+    <?php require_once __DIR__ . '/../includes/rodape.php'; ?>
 </body>
 </html>
