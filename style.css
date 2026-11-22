@@ -211,7 +211,7 @@ select {
 /* TELA INICIAL */
 .inicio {
     position: relative;
-    margin: 150px auto 0 auto;
+    margin: 70px auto 0 auto;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.75);
     padding: 10px 30px;
@@ -293,8 +293,8 @@ p {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     width: 90%;
     max-width: 1100px;
-    margin: 30px auto;
     box-sizing: border-box;
+    margin: -10px auto 30px;
 }
 
 /* TÍTULO DENTRO DA CAIXA DE RELATÓRIO */
@@ -328,4 +328,101 @@ p {
 .caixa-listagem .total-relatorio {
     margin: 20px 0 5px;
     font-weight: bold;
+}
+
+
+/* CABEÇALHO COMPARTILHADO */
+.cabecalho {
+    background: linear-gradient(135deg, #5c0017, #800020);
+    border: 1px solid #d8c49a;
+    border-radius: 12px;
+    padding: 18px 28px;
+    margin: 0 auto 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.22);
+    text-align: left;
+}
+
+.cabecalho-conteudo {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.cabecalho h1 {
+    color: #ffe6a3;
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
+    text-shadow: none;
+}
+
+.cabecalho a {
+    display: inline-block;
+    color: #ffe6a3;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 1px solid #d6b56d;
+    border-radius: 7px;
+    transition: 0.2s;
+}
+
+.cabecalho a:hover {
+    color: #5c0017;
+    background-color: #f1dfad;
+}
+
+/* RODAPÉ COMPARTILHADO */
+.rodape {
+    background: linear-gradient(135deg, #5c0017, #800020);
+    border: 1px solid #d8c49a;
+    border-radius: 12px;
+    padding: 12px 18px;
+    margin: 30px auto 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.18);
+    text-align: center;
+}
+
+.rodape p {
+    color: #ffe6a3;
+    margin: 4px 0;
+    font-size: 13px;
+}
+
+/* AJUSTES PARA TELAS MENORES */
+@media (max-width: 700px) {
+    body {
+        margin: 12px;
+    }
+
+    .cabecalho {
+        padding: 15px 12px;
+    }
+
+    .cabecalho-conteudo {
+        gap: 10px;
+    }
+
+    .cabecalho h1 {
+        font-size: 19px;
+    }
+
+    .cabecalho a {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .caixa-listagem {
+        width: 100%;
+        padding: 15px 10px;
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 600px;
+    }
 }
