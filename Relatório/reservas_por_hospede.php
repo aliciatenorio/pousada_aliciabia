@@ -19,7 +19,8 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <p><a class="btn btn-inicio" href="../index.php">Início</a></p>
+    <?php require_once __DIR__ . '/../includes/cabecalho.php'; ?>
+
     <h1>Relatório de Reservas por Hóspede</h1>
 
     <p>Este relatório apresenta a quantidade de reservas realizadas por cada hóspede cadastrado no hotel.</p>
@@ -43,5 +44,6 @@
 
     <p>Total de hóspedes com reservas: <?= count($reservas)?></p>
 
+    <?php require_once __DIR__ . '/../includes/rodape.php'; ?>
 </body>
 </html>
