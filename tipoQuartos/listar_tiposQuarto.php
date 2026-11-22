@@ -58,11 +58,11 @@
         </div>
 
         <?php if (isset($_GET['msg']) && $_GET['msg'] === 'excluido'): ?>
-            <p>Tipo de quarto excluído com sucesso!</p>
+            <p class="Sucesso">Tipo de quarto excluído com sucesso!</p>
         <?php elseif (isset($_GET['msg']) && $_GET['msg'] === 'salvo'): ?>
-            <p>Tipo de quarto cadastrado com sucesso!</p>
+            <p class="Sucesso">Tipo de quarto cadastrado com sucesso!</p>
         <?php elseif (isset($_GET['msg']) && $_GET['msg'] === 'editado'): ?>
-            <p>Tipo de quarto atualizado com sucesso!</p>
+            <p class="Sucesso">Tipo de quarto atualizado com sucesso!</p>
         <?php endif; ?>
 
         <p>Clique no título das colunas para ordenar os registros (A–Z ou Z–A).</p>
