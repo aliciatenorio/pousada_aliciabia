@@ -161,7 +161,6 @@
         }
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -175,6 +174,8 @@
 </head>
 
 <body>
+    <?php require_once __DIR__ . '/../includes/cabecalho.php'; ?>
+
 
     <div class="caixa-formulario">
 
@@ -252,5 +253,6 @@
 
     </div>
 
+    <?php require_once __DIR__ . '/../includes/rodape.php'; ?>
 </body>
 </html>
