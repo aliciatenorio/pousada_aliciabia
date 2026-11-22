@@ -22,36 +22,57 @@ try {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- CABEÇALHO -->
+    <header class="cabecalho">
+        <h2>Sistema Pousada</h2>
+        <p>Gerenciamento de hóspedes, funcionários e reservas</p>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
     <div class="inicio">
+
         <h1>Sistema Pousada</h1>
+
         <p>
             <a class="btn btn-opcao" href="hospedes/listar_hospedes.php">
-            Hóspedes (<?= (int) $totalHospedes ?>)
+                Hóspedes (<?= (int) $totalHospedes ?>)
             </a>
         </p>
+
         <p>
             <a class="btn btn-opcao" href="funcionarios/listar_funcionarios.php">
-            Funcionários (<?= (int) $totalFuncionarios ?>)
+                Funcionários (<?= (int) $totalFuncionarios ?>)
             </a>
         </p>
+
         <p>
             <a class="btn btn-opcao" href="tipoQuartos/listar_tiposQuarto.php">
-            Tipos de Quarto (<?= (int) $totalTiposQuarto ?>)
+                Tipos de Quarto (<?= (int) $totalTiposQuarto ?>)
             </a>
         </p>
+
         <p>
             <a class="btn btn-opcao" href="reservas/listar_reservas.php">
-            Reservas (<?= (int) $totalReserva ?>)
+                Reservas (<?= (int) $totalReserva ?>)
             </a>
         </p>
+
         <p>
             <a class="btn btn-opcao" href="quartos/listar_quartos.php">
-            Quartos (<?= (int) $totalFuncionarios ?>)
+                Quartos (<?= (int) $totalQuartos ?>)
             </a>
         </p>
+
         <p>
-            <a class="btn btn-opcao" href="relatório/reservas_por_hospede.php">Reservas por hóspede</a>
+            <a class="btn btn-opcao" href="relatório/reservas_por_hospede.php">
+                Reservas por hóspede
+            </a>
         </p>
+
     </div>
+
+    <!-- RODAPÉ -->
+    <?php require_once 'Includes/rodape.php'; ?>
+
 </body>
 </html>
