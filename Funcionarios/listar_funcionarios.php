@@ -51,6 +51,8 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+    <?php require_once __DIR__ . '/../includes/cabecalho.php'; ?>
+
 
     <!-- Caixa que organiza o conteúdo da listagem. -->
     <div class="caixa-listagem">
@@ -58,7 +60,6 @@
 
         <!-- Links para voltar ao início ou cadastrar um novo funcionário. -->
         <div class="topo-pagina">
-            <a class="btn btn-inicio" href="../index.php">Início</a>
             <a class="btn btn-novo" href="form_funcionarios.php">+ Novo Funcionário</a>
         </div>
 
@@ -123,5 +124,6 @@
             <p>Nenhum funcionário encontrado.</p>
         <?php endif; ?>
     </div>
+    <?php require_once __DIR__ . '/../includes/rodape.php'; ?>
 </body>
 </html>
