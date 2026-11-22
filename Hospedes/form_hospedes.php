@@ -188,7 +188,7 @@
     </form>
 
     <!-- Link para voltar à listagem de hóspedes. -->
-    <p><a class="btn btn-inicio" href="listar_hospedes.php">Voltar para hospedes</a></p>
+    <p><a class="btn btn-inicio" href="listar_hospedes.php">Acessar lista de hóspedes</a></p>
 
 </body>
 </html>
