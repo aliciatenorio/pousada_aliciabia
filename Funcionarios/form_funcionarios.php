@@ -145,6 +145,8 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+    <?php require_once __DIR__ . '/../includes/cabecalho.php'; ?>
+
 
     <!-- Altera o título conforme o modo do formulário. -->
     <h2><?= $editando ? 'Editar Funcionário' : 'Cadastrar Novo Funcionário' ?></h2>
@@ -197,5 +199,6 @@
     <!-- Link para voltar à listagem de funcionários. -->
     <p><a class="btn btn-inicio" href="listar_funcionarios.php">Acessar lista de funcionários</a></p>
 
+    <?php require_once __DIR__ . '/../includes/rodape.php'; ?>
 </body>
 </html>
