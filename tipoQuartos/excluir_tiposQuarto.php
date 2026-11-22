@@ -1,91 +1,113 @@
 <?php
-require_once '../conexao.php';
+    // Inclui a conexão com o banco de dados.
+    require_once '../conexao.php';
 
-// Verifica se recebeu o código do tipo
-$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-$erro = '';
+    // Verifica se o formulário foi enviado pelo método POST.
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-// Se o formulário foi enviado
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Recebe e valida o ID do tipo de quarto enviado pelo formulário.
+        $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
 
-    $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
+        // Se o ID for inválido, retorna para a listagem.
+        if (!$id) {
+            header('Location: listar_tiposQuarto.php');
+            exit;
+        }
 
-    if ($id) {
         try {
-            // Exclui o tipo de quarto
-            $sql = "DELETE FROM tbTipos_Quarto
-                    WHERE codigo_tipo = :id";
+            // Prepara o comando SQL para excluir o tipo de quarto pelo ID.
+            $stmt = $pdo->prepare(
+                'DELETE FROM tbTipos_Quarto WHERE codigo_tipo = :id'
+            );
 
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindValue(':id', $id);
-            $stmt->execute();
+            // Executa a exclusão substituindo :id pelo ID recebido.
+            $stmt->execute([':id' => $id]);
 
-            // Volta para a listagem
+            // Após excluir, retorna à listagem com uma mensagem de sucesso.
             header('Location: listar_tiposQuarto.php?msg=excluido');
             exit;
 
         } catch (PDOException $e) {
-            // Caso existam quartos utilizando esse tipo
-            $erro = "Não foi possível excluir este tipo de quarto, pois existem quartos cadastrados utilizando ele.";
+            // Exibe uma mensagem caso existam quartos utilizando esse tipo.
+            die('Não foi possível excluir o tipo de quarto, pois existem quartos cadastrados utilizando ele. Erro técnico (' . $e->getMessage() . ')');
         }
     }
-}
 
-// Busca os dados do tipo de quarto
-if ($id) {
-    $sql = "SELECT * FROM tbTipos_Quarto
-            WHERE codigo_tipo = :id";
+    // Recebe e valida o ID enviado pela URL pelo método GET.
+    $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindValue(':id', $id);
-    $stmt->execute();
+    // Se o ID for inválido, retorna para a listagem.
+    if (!$id) {
+        header('Location: listar_tiposQuarto.php');
+        exit;
+    }
 
-    $tipo = $stmt->fetch(PDO::FETCH_ASSOC);
+    try {
+        // Busca os dados do tipo de quarto pelo ID.
+        $stmt = $pdo->prepare(
+            'SELECT * FROM tbTipos_Quarto WHERE codigo_tipo = :id'
+        );
 
+        // Executa a consulta utilizando o ID recebido.
+        $stmt->execute([':id' => $id]);
+
+        // Armazena os dados encontrados em uma variável.
+        $tipo = $stmt->fetch();
+
+    } catch (PDOException $e) {
+        // Exibe uma mensagem caso ocorra erro na consulta.
+        die('Erro ao buscar tipo de quarto: ' . $e->getMessage());
+    }
+
+    // Se nenhum tipo de quarto for encontrado, retorna à listagem.
     if (!$tipo) {
         header('Location: listar_tiposQuarto.php');
         exit;
     }
-} else {
-    header('Location: listar_tiposQuarto.php');
-    exit;
-}
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Excluir Tipo de Quarto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Exclusão</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+    <?php require_once __DIR__ . '/../includes/cabecalho.php'; ?>
 
-<div class="caixa-formulario">
-    <h2>Excluir Tipo de Quarto</h2>
+    <!-- Formulário responsável por confirmar a exclusão. -->
+    <form method="POST" action="excluir_tiposQuarto.php">
 
-    <?php if ($erro): ?>
-        <p style="color: red;">
-            <?= htmlspecialchars($erro) ?>
-        </p>
-    <?php else: ?>
+        <h2>Confirmar Exclusão</h2>
+
         <p>
-            Tem certeza que deseja excluir o tipo
-            <?= htmlspecialchars($tipo['nome_tipo']) ?>?
+            Tem certeza que deseja excluir o tipo de quarto
+            <strong><?= htmlspecialchars($tipo['nome_tipo']) ?></strong>,
+            com descrição
+            <strong><?= htmlspecialchars($tipo['descricao_tipo']) ?></strong>,
+            valor da diária de
+            <strong>R$ <?= number_format($tipo['valor_diaria'], 2, ',', '.') ?></strong>
+            e capacidade para
+            <strong><?= htmlspecialchars($tipo['capacidade']) ?></strong>
+            pessoas?
         </p>
-    <?php endif; ?>
 
-    <form method="POST">
-        <input type="hidden" name="id"
-               value="<?= $tipo['codigo_tipo'] ?>">
+        <p>Esta ação não pode ser desfeita.</p>
 
-        <button type="submit" <?= $erro ? 'disabled' : '' ?>>
-            Confirmar exclusão
-        </button>
+        <!-- Envia o ID do tipo de quarto junto com o formulário. -->
+        <input type="hidden" name="id" value="<?= (int)$tipo['codigo_tipo'] ?>">
 
-        <a href="listar_tiposQuarto.php">Voltar</a>
+        <div class="botoes">
+            <!-- Envia o formulário para executar a exclusão. -->
+            <button type="submit" class="btn btn-excluir">Excluir</button>
+
+            <!-- Retorna para a listagem sem realizar a exclusão. -->
+            <a href="listar_tiposQuarto.php" class="btn btn-editar">Cancelar</a>
+        </div>
+
     </form>
-</div>
 
+    <?php require_once __DIR__ . '/../includes/rodape.php'; ?>
 </body>
 </html>
