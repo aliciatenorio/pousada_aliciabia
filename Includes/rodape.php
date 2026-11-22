@@ -1,5 +1,5 @@
-
+<!-- Rodapé compartilhado por todas as páginas do sistema. -->
 <footer class="rodape">
-    <p>© 2026 - Sistema Pousada</p>
-    <p>Desenvolvido por Alicia e Bianca</p>
+    <p>&copy; 2026 Pousada Encanto de Natal</p>
+    <p>Desenvolvido por Alicia Tenório e Bianca Negrão</p>
 </footer>
