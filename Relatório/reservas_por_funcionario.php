@@ -11,7 +11,6 @@
     $reservas = $sql->fetchAll();
 
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -20,7 +19,8 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 <body class="paginas-internas">
-    <p><a class="btn btn-inicio" href="../index.php">Início</a></p>
+    <?php require_once __DIR__ . '/../includes/cabecalho.php'; ?>
+
     <h1>Relatório de Funcionários por Reservas</h1>
 
     <p>Este relatório apresenta os funcionários responsáveis pelas reservas.</p>
@@ -44,5 +44,6 @@
 
     <p>Total de funcionários com reservas: <?= count($reservas)?></p>
 
+    <?php require_once __DIR__ . '/../includes/rodape.php'; ?>
 </body>
 </html>
