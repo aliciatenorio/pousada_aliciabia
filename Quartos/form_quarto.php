@@ -149,6 +149,8 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+    <?php require_once __DIR__ . '/../includes/cabecalho.php'; ?>
+
 
     <!-- O título muda conforme a operação: cadastro ou edição. -->
     <h2><?= $editar ? 'Editar Quarto' : 'Cadastrar Novo Quarto' ?></h2>
@@ -210,5 +212,6 @@
         <a class="btn btn-inicio" href="listar_quartos.php">Acessar lista de quartos</a>
     </p>
 
+    <?php require_once __DIR__ . '/../includes/rodape.php'; ?>
 </body>
 </html>
