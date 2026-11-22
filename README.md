@@ -28,6 +28,7 @@ As tabelas utilizam chaves primárias e chaves estrangeiras para estabelecer os 
 Extras implementados
 - Ordenação dos registros nas listagens por meio dos títulos das colunas, permitindo alternar entre ordem crescente e decrescente.
 - Cabeçalho e rodapé compartilhados entre as páginas do sistema, utilizando arquivos únicos ("includes/cabecalho.php" e "includes/rodape.php") e "require_once".
+- Mensagens de sucesso com redirecionamento (PRG): após cadastrar, editar ou excluir um registro, o sistema retorna à listagem e apresenta uma mensagem informando que a operação foi realizada com sucesso, utilizando o padrão POST/Redirect/GET.
 
 Como instalar e executar
 1. Instale e abra o XAMPP.
