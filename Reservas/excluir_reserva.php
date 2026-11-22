@@ -79,6 +79,8 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+    <?php require_once __DIR__ . '/../includes/cabecalho.php'; ?>
+
 
     <!-- Formulário responsável por confirmar ou cancelar a exclusão da reserva. -->
     <form method="POST" action="excluir_reserva.php">
@@ -114,5 +116,6 @@
 
     </form>
 
+    <?php require_once __DIR__ . '/../includes/rodape.php'; ?>
 </body>
 </html>
