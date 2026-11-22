@@ -1,4 +1,5 @@
-/* CONFIGURAÇÕES GERAIS */
+
+/* CONFIGURAÇÕES GERAIS DA PÁGINA */
 body {
     font-family: Arial, sans-serif;
     margin: 30px;
@@ -15,16 +16,16 @@ body {
 /* TÍTULOS */
 h1 {
     color: #f8e8b5;
-    margin-top: 50px;
-    padding-top: 165px;
+    margin-top: 20px;
+    padding-top: 20px;
+    margin-bottom: 10px;
     text-shadow: 1px 1px 4px #4b0808;
 }
 
 h2 {
-    color: #201b0c;
-    margin-top: 50px;
-    padding-top: 165px;
-    text-shadow: 1px 1px 4px #4b0808;
+    color: #6c011c;
+    margin-top: 10px;
+    margin-bottom: 10px;
     text-align: center;
 }
 
@@ -33,46 +34,52 @@ table {
     border-collapse: collapse;
     width: 100%;
     max-width: 900px;
-    margin: 25px auto;
+    margin: 5px auto 25px;
     background-color: rgba(255, 248, 230, 0.96);
     border: 2px solid #e8d9ad;
     border-radius: 10px;
     overflow: hidden;
 }
 
+/* CÉLULAS E CABEÇALHOS */
 th, td {
     border: 1px solid #e8d9ad;
     padding: 12px;
     text-align: left;
 }
 
+/* CABEÇALHO DA TABELA */
 th {
     background-color: #800020;
     color: #ffe6a3;
 }
+
 th a {
     color: #ffe6a3 !important;
     text-decoration: none;
 }
 
+/* DADOS DA TABELA */
 td {
     color: #55432e;
 }
 
+/* EFEITO AO PASSAR O MOUSE SOBRE UMA LINHA */
 tr:hover {
     background-color: #fff3d5;
 }
 
-/*BOTÕES EM CIMA DA TABELA*/
-.mudanca {
+/* BOTÕES ACIMA DA TABELA */
+.topo-pagina {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin: 20px auto;
+    max-width: 900px;
+    margin: 10px auto;
+    padding-top: 5px;
 }
 
-/* BOTÕES GERAIS */
+/* CONFIGURAÇÕES GERAIS DOS BOTÕES */
 .btn {
     padding: 10px 20px;
     border: none;
@@ -85,23 +92,15 @@ tr:hover {
     font-weight: bold;
 }
 
-.btn-inicio {
-    background-color: #e9d79e;
-    color: #614c29;
-    border: 1px solid #d2bb7c;
-}
-
-.btn-inicio:hover {
-    background-color: #dcc486;
-}
-
-/* BOTÃO NOVO */
+/* BOTÕES INÍCIO E NOVO */
+.btn-inicio,
 .btn-novo {
     background-color: #e9d79e;
     color: #614c29;
     border: 1px solid #d2bb7c;
 }
 
+.btn-inicio:hover,
 .btn-novo:hover {
     background-color: #dcc486;
 }
@@ -113,12 +112,14 @@ tr:hover {
     border: 1px solid #d8c79e;
 }
 
+/* BOTÃO EXCLUIR */
 .btn-excluir {
     background-color: #d60303d7;
     color: #181209;
     border: 1px solid #d8c79e;
 }
 
+/* EFEITOS DOS BOTÕES EDITAR E EXCLUIR */
 .btn-editar:hover {
     background-color: #546c93;
 }
@@ -142,10 +143,10 @@ tr:hover {
     white-space: nowrap;
 }
 
-/* FORMULÁRIOS */
+/* FORMULÁRIOS DE CADASTRO E EDIÇÃO */
 form {
     max-width: 450px;
-    margin: 150px auto;
+    margin: 25px auto;
     padding: 25px;
     background-color: rgba(255, 255, 255, 0.75);
     border: 1px solid #e8d39b;
@@ -154,6 +155,7 @@ form {
     text-align: left;
 }
 
+/* RÓTULOS DOS CAMPOS */
 label {
     display: block;
     margin-top: 15px;
@@ -161,6 +163,7 @@ label {
     color: #806638;
 }
 
+/* CAMPOS DE TEXTO, NÚMERO, DATA E SELEÇÃO */
 input[type="text"],
 input[type="number"],
 input[type="date"],
@@ -218,6 +221,7 @@ select {
     max-width: 600px;
 }
 
+/* TÍTULO DA TELA INICIAL */
 .inicio h1 {
     color: #684500;
     margin: 5px 0 15px;
@@ -225,6 +229,7 @@ select {
     text-shadow: none;
 }
 
+/* PARÁGRAFOS DA TELA INICIAL */
 .inicio p {
     margin: 8px 0;
 }
@@ -251,15 +256,15 @@ select {
     transform: scale(1.04);
 }
 
+/* CONFIGURAÇÃO DOS PARÁGRAFOS */
 p {
     text-align: center;
     margin: 10px 0;
     font-size: 16px;
-    color: #2d0610;
+    color: #000000;
 }
 
-/* CONFIRMAÇÃO DE EXCLUSÃO */
-
+/* TELA DE CONFIRMAÇÃO DE EXCLUSÃO */
 .tela-confirmacao {
     width: 100%;
     max-width: 550px;
@@ -270,12 +275,57 @@ p {
     border: 1px solid #e8d39b;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-   
 }
 
-
+/* BOTÕES DA CONFIRMAÇÃO */
 .botoes {
     display: flex;
     justify-content: center;
     gap: 12px;
+}
+
+/* CAIXA DAS LISTAGENS E RELATÓRIOS */
+.caixa-listagem {
+    background-color: rgba(255, 255, 255, 0.88);
+    padding: 25px 30px;
+    border-radius: 15px;
+    border: 1px solid #e8d39b;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+    box-sizing: border-box;
+}
+
+/* TÍTULO DENTRO DA CAIXA DE RELATÓRIO */
+.caixa-listagem h1 {
+    color: #6c011c;
+    margin: 15px 0 20px;
+    padding: 0;
+    text-align: center;
+    text-shadow: 1px 1px 3px #d8c49a;
+}
+
+/* ÁREA DOS BOTÕES DO RELATÓRIO */
+.topo-relatorio {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+/* DESCRIÇÃO DO RELATÓRIO */
+.caixa-listagem .descricao-relatorio {
+    margin: 10px 0 15px;
+    text-align: center;
+}
+
+/* TABELA DO RELATÓRIO */
+.caixa-listagem table {
+    max-width: 100%;
+    margin: 15px auto 25px;
+}
+
+/* TOTAL DO RELATÓRIO */
+.caixa-listagem .total-relatorio {
+    margin: 20px 0 5px;
+    font-weight: bold;
 }
