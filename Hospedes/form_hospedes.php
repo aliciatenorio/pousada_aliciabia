@@ -139,6 +139,8 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+    <?php require_once __DIR__ . '/../includes/cabecalho.php'; ?>
+
 
     <!-- Altera o título conforme o modo do formulário. -->
     <h2><?= $editando ? 'Editar Hospede' : 'Cadastrar Novo Hospede' ?></h2>
@@ -190,5 +192,6 @@
     <!-- Link para voltar à listagem de hóspedes. -->
     <p><a class="btn btn-inicio" href="listar_hospedes.php">Acessar lista de hóspedes</a></p>
 
+    <?php require_once __DIR__ . '/../includes/rodape.php'; ?>
 </body>
 </html>
