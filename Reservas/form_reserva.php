@@ -200,6 +200,8 @@
 
 <!-- Aplica a classe utilizada para estilizar as páginas internas do sistema. -->
 <body class="paginas-internas">
+    <?php require_once __DIR__ . '/../includes/cabecalho.php'; ?>
+
 
     <!-- O título muda conforme o cadastro ou a edição da reserva. -->
     <h2><?= $editar ? 'Editar Reserva' : 'Cadastrar Nova Reserva' ?></h2>
@@ -279,5 +281,6 @@
         <a class="btn btn-inicio" href="listar_reservas.php">Acessar lista de reservas</a>
     </p>
 
+    <?php require_once __DIR__ . '/../includes/rodape.php'; ?>
 </body>
 </html>
