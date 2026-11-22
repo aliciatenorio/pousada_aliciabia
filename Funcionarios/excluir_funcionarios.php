@@ -70,6 +70,8 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+    <?php require_once __DIR__ . '/../includes/cabecalho.php'; ?>
+
 
     <!-- Formulário responsável por confirmar a exclusão. -->
     <form method="POST" action="excluir_funcionarios.php">
@@ -96,5 +98,6 @@
         </div>
     </form>
 
+    <?php require_once __DIR__ . '/../includes/rodape.php'; ?>
 </body>
 </html>
